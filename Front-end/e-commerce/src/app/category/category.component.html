@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="tab-content container" id="pills-tabContent">
+    <nav aria-label="Page navigation ecommerce" class="pagination ecommerce" *ngIf="isPaginate">
+        <ul class="pagination">
+            
+            <li class="page-item"  ><a class="page-link" (click)="pass(1)" [routerLink]="['/category', next]">1</a></li>
+            <li class="page-item" ><a class="page-link" (click)="pass(2)" [routerLink]="['/category', next]">2</a></li>
+            <li class="page-item"  ><a class="page-link" (click)="pass(3)" [routerLink]="['/category', next]">3</a></li>
+            <li class="page-item"  ><a class="page-link" (click)="pass(4)" [routerLink]="['/category', next]">4</a></li>
+            <li class="page-item" ><a class="page-link" (click)="pass(5)" [routerLink]="['/category', next]">5</a></li>
+            <li class="page-item"  ><a class="page-link" (click)="pass(6)" [routerLink]="['/category', next]">6</a></li>
+            <li class="page-item"  ><a class="page-link" (click)="pass(7)" [routerLink]="['/category', next]">7</a></li>
+            <li class="page-item" ><a class="page-link" (click)="pass(8)" [routerLink]="['/category', next]">8</a></li>
+            
+        </ul>
+    </nav>
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="row grid-view theme1">
+            <div class="col-sm-6 col-md-4 mb-30" *ngFor="let product of Products">
+                <div class="card product-card">
+                    <div class="card-body">
+                        <div class="product-thumbnail position-relative">
+                            <span class="badge badge-danger top-right">New</span>
+                            <div>
+                                <img class="first-img" width="420" height="300" [src]="product.img" alt="thumbnail">
+                            </div>
+                            <!-- product links -->
+                            <ul class="product-links d-flex justify-content-center">
+
+                                <li>
+                                    <a routerLink="/shop" (click)="search(product)" href="#" data-toggle="modal" >
+                                        <span data-toggle="tooltip" data-placement="bottom" title="Quick view" class="icon-magnifier"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <!-- product links end-->
+                        </div>
+                        <div class="product-desc py-0">
+                            <h3 class="title"><p>{{product.name}}</p></h3>
+                            <div class="star-rating">
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star"></span>
+                                <span class="ion-ios-star de-selected"></span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h6 class="product-price">{{product.price}} TND</h6>
+
+
+                                <button *ngIf="UserCnx" class=" pro-btn"  data-toggle="modal" (click)="add(product)"><i class="icon-heart"></i></button>
+
+                                <button *ngIf="UserCnx" class=" pro-btn"  data-toggle="modal" (click)="open(mymodal,product)"><i class="icon-basket"></i></button>
+   
+                                <ng-template #mymodal let-modal>
+                                    <div class="modal-header">
+                                      <h4 class="modal-title" id="modal-basic-title">Added to your Cart</h4>
+                                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">×</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b>{{product.name}} </b>is successfully added to your Cart.
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                                    </div>
+                                </ng-template>
+
+                                
+                                  
+                                  
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- product-list End -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

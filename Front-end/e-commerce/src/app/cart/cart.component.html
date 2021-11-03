@@ -1,0 +1,102 @@
+<app-header></app-header>
+<section>
+    <section class="whish-list-section theme1 pt-80 pb-80">
+        <div class="container" *ngIf="Cart.length">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="title mb-30 pb-25 text-capitalize">Your cart items</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center" scope="col">Product Image</th>
+                                    <th class="text-center" scope="col">Product Name</th>
+                                    <th class="text-center" scope="col">Stock Status</th>
+                                    <th class="text-center" scope="col">Price</th>
+                                    <th class="text-center" scope="col">action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of Cart">
+                                    <th class="text-center" scope="row">
+                                        <img [src]="data.img" alt="img">
+                                    </th>
+                                    <td class="text-center">
+                                        <span class="whish-title"> {{data.name }}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge badge-success position-static">In Stock</span>
+                                    </td>
+                                    
+                                    <td class="text-center">
+                                        <span class="whish-list-price">
+                                    $ {{data.price}}
+                                </span></td>
+
+                                    <td class="text-center">
+                                        <a (click)="delete(data)" href="#"> <span class="trash"><i class="fas fa-trash-alt"></i> </span></a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <a class=" pro-btn"  data-toggle="modal" (click)="open(mymodal)" class="btn btn-block theme-btn--dark1 btn--lg mt-70">buy now</a>
+
+                    <ng-template  #mymodal let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Thank You {{name}}</h4>
+                          
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body ">
+                            <p class="lead"><strong>Please check your email</strong> for order confirmation! </p>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let p of products">
+                                <td>
+                                <img [src]="p.img" alt="{{p.name}}" class="img-thumbnail" width="100px">
+                                </td>
+                                <td>{{p.name}}</td>
+                                <td>{{p.price | currency:' TND '}}</td>
+                                <td>1</td> 
+                                </tr>
+                                <tr class="border-0">
+                                    <td style="border: none;"></td>
+                                    
+                                    <td>TOTAL</td>
+                                    <td>{{cartTotal | currency: 'TND '}}</td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" routerLink="/" (click)="modal.close('Save click')">Ok</button>
+                        </div>
+                    </ng-template>           
+
+                </div>
+            </div>
+        </div>
+        <div class="container" *ngIf="!Cart.length">
+            <h3 class="title mb-30 pb-25 text-capitalize">Your cart is empty</h3>
+            <a routerLink="/category/1" class="btn btn-block theme-btn--dark1 btn--lg mt-70">Go back to shop</a>
+        </div>
+    </section>
+</section>
+<app-footer></app-footer>

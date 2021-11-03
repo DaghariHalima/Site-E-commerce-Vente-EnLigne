@@ -1,0 +1,114 @@
+<header>
+  <div id="top-header" *ngIf="UserCnx">
+    <div class="container">
+      <ul class="header-links pull-right">
+        <li><a routerLink="/h"  href="#"><i class="fa fa-dollar"></i> TND</a></li>
+        <li><a routerLink="/h"  href="#"><i class="fa fa-user-o"></i> {{Name}}</a></li>
+      </ul>
+    </div>
+</div>
+    
+    
+  <div id="header">
+    <div class="container">
+      <div class="row">        
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a routerLink="/" class="logo">
+              <img src="../../../assets/img/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+
+
+
+        
+
+        <div class="col-md-6">
+          <div class="header-search">
+            <form name="nomformulaire">
+              <select class="input-select">
+                <option value="0">Hot deals</option>
+                <option  value="1">Clothes</option>
+                <option  value="2">Bag</option>
+                <option  value="3">Shoes</option>
+                <option  value="4">Accessories</option>
+                <option  value="5">Cameras</option>
+                <option  value="6">Smartphones</option>
+                <option  value="7">Home appliance</option>
+                <option  value="8">School supplies</option> 
+              </select>
+              <input class="input" name="nomtext" id="recherche" value="" placeholder="Search here">
+              <button class="search-btn">Search</button>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-3 clearfix" *ngIf="UserCnx">
+          <div class="header-ctn">
+              <div>
+                  <a routerLink="/wish" href="#">
+                      <i class="fa fa-heart-o"></i>
+                      <span>Your Wishlist</span>
+                      <div class="qty">{{ wishData.length }}</div>
+                  </a>
+              </div> 
+
+
+               <!-- Cart -->
+            
+              
+
+              <div mdbDropdown class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="cursor: pointer;"
+                  
+                  mdbDropdownToggle
+                >
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+                <div class="qty">{{ cartData.length }}</div>
+              </a>
+                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" routerLink="/cart">View Cart</a></li>
+                  <li><a class="dropdown-item" (click)="logout()">Checkout <i class="fa fa-arrow-circle-right"></i></a></li>
+                </ul>
+              </div>
+
+              
+           
+            <!-- /Cart -->
+
+
+              
+            
+          </div>
+      </div>
+
+        <div >
+          <div class="container" *ngIf="UserCnx == false">
+            
+            <ul class="header-links pull-right">
+              <li><a routerLink="/h" href=""><i class="fa fa-dollar"></i> TND</a></li>
+              <li><a  href="#" routerLink="/login"><i class="fa fa-user-o"></i> My Account</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div> 
+</header>
+
+<nav id="navigation">
+  <div class="container">
+    <div id="responsive-nav">
+      <ul class="main-nav nav py-3">
+        <li ><a routerLink="/home" href="#">Home</a></li>
+        <li><a routerLink="/category/1" href="#">Categories</a></li>
+        <li><a routerLink="/contact" href="#">Contact Us</a></li>  
+        <li><a routerLink="/about" href="#">About Us</a></li> 
+      </ul>
+    </div>     
+  </div>
+</nav>
+

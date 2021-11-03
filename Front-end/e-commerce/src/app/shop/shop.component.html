@@ -1,0 +1,99 @@
+<app-header></app-header>
+<section class="product-single theme3 pt-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="position-relative">
+                    <span class="badge badge-danger top-right">New</span>
+                </div>
+                <div class="product-sync-init mb-20">
+                    <div class="single-product">
+                        <div class="product-thumb">
+                            <img class="float-right" width="650" [src]="product[0].img" alt="product-thumb">
+                        </div>
+                    </div>
+
+                    <!-- single-product end -->
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 mt-5 mt-md-0">
+                <div class="single-product-info">
+                    <div class="single-product-head">
+                        <h2 class="title mb-20"> {{product[0].name }}</h2>
+                        <div class="star-content mb-20">
+                            <span class="star-on"><i class="ion-ios-star"></i> </span>
+                            <span class="star-on"><i class="ion-ios-star"></i> </span>
+                            <span class="star-on"><i class="ion-ios-star"></i> </span>
+                            <span class="star-on"><i class="ion-ios-star"></i> </span>
+                            <span class="star-on"><i class="ion-ios-star"></i> </span>
+
+                        </div>
+                    </div>
+                    <div class="product-body mb-40">
+                        <div class="d-flex align-items-center mb-30">
+                            <h6 class="product-price mr-20"><del class="del">$ {{(product[0].price*1.1).toFixed(2) }}</del>
+                                <span class="onsale">$ {{product[0].price }}</span></h6>
+                            <span class="badge position-static bg-dark rounded-0">Save 10%</span>
+                        </div>
+                        <p>Description : {{product[0].description}}</p>
+
+                    </div>
+                    <div class="product-footer">
+                        <div *ngIf="UserCnx" class="product-count style d-flex flex-column flex-sm-row mt-30 mb-30">
+
+                            <div >
+
+
+                              <button *ngIf="UserCnx" class="btn theme-btn--dark3 btn--xl mt-5 mt-sm-0 rounded-5" (click)="open(mymodal,product[0])" data-toggle="modal" >
+                                <span class="mr-2"><i class="ion-android-add"></i></span>
+                                Add to cart
+                              </button>
+   
+                                <ng-template #mymodal let-modal>
+                                    <div class="modal-header">
+                                      <h4 class="modal-title" id="modal-basic-title">Added to your Cart</h4>
+                                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true">×</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b>{{product[0].name}} </b>is successfully added to your Cart.
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+                                    </div>
+                                </ng-template>
+
+
+                            </div>
+
+                        </div>
+                        <div  class="product-count style d-flex flex-column flex-sm-row mt-30 mb-30">
+
+                            <div >
+                                <button routerLink="/category/1" class="btn theme-btn--dark3 btn--xl mt-5 mt-sm-0 rounded-5" data-toggle="modal" >
+                                <span class="mr-2"></span>
+                                Go back to shop
+                              </button>
+                            </div>
+
+                        </div>
+
+                        <div class="pro-social-links mt-10">
+                            <ul class="d-flex align-items-center">
+                                <li class="share">Share</li>
+                                <li><a routerLink="/h" href="#"><i class="ion-social-facebook"></i></a></li>
+                                <li><a routerLink="/h" href="#"><i class="ion-social-twitter"></i></a></li>
+                                <li><a routerLink="/h" href="#"><i class="ion-social-google"></i></a></li>
+                                <li><a routerLink="/h" href="#"><i class="ion-social-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>           
+    </div>
+</section>
+<app-footer></app-footer>

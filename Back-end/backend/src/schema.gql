@@ -1,0 +1,135 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  phone_number: Int!
+  password: String!
+}
+
+type LoginReturn {
+  user: User!
+  Bearer_Token: String!
+}
+
+type Comment {
+  id: Int!
+  sentence: String!
+  productId: Int!
+  product: Product
+}
+
+type Product {
+  id: Int!
+  name: String!
+  category: String!
+  img: String
+  price: Float!
+  mark: String!
+  description: String
+}
+
+type Command {
+  id: Int!
+  payment_mode: String!
+  shipping_cost: Float!
+  status: Int!
+  purshase_cost: Float!
+}
+
+type Query {
+  users: [User!]!
+  commands: [Command!]!
+  getCommand(id: Int!): Command!
+  comments: [Comment!]!
+  comment(id: Int!): Comment!
+  products: [Product!]!
+  getProduct(id: Int!): Product!
+  filterProducts(productFilter: ProductFilter!): [Product!]!
+}
+
+input ProductFilter {
+  category: String
+  priceRange: PriceRange
+  mark: String
+}
+
+input PriceRange {
+  priceMin: Float!
+  priceMax: Float!
+}
+
+type Mutation {
+  register(registerUserInput: RegisterUserInput!): User!
+  login(loginInput: LoginInput!): LoginReturn!
+  registerUser(registerUserInput: RegisterUserInput!): User!
+  createCommand(createCommandInput: CreateCommandInput!): Command!
+  updateCommand(updateCommandInput: UpdateCommandInput!): Command!
+  deleteCommand(id: Int!): Command!
+  createComment(createCommentInput: CreateCommentInput!): Comment!
+  updateComment(updateCommentInput: UpdateCommentInput!): Comment!
+  removeComment(id: Int!): Comment!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(id: Float!): Product!
+}
+
+input RegisterUserInput {
+  name: String!
+  email: String!
+  phone_number: Int!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input CreateCommandInput {
+  payment_mode: String!
+  shipping_cost: Float!
+  purshase_cost: Float!
+  status: Int!
+}
+
+input UpdateCommandInput {
+  payment_mode: String
+  shipping_cost: Float
+  purshase_cost: Float
+  status: Int
+  id: Float!
+}
+
+input CreateCommentInput {
+  sentence: String!
+  productId: Int!
+}
+
+input UpdateCommentInput {
+  sentence: String!
+  productId: Int
+  id: Int!
+}
+
+input CreateProductInput {
+  name: String!
+  category: String!
+  img: String
+  price: Float!
+  mark: String!
+  description: String
+}
+
+input UpdateProductInput {
+  id: Int!
+  name: String!
+  category: String!
+  img: String
+  price: Float!
+  mark: String!
+  description: String
+}
